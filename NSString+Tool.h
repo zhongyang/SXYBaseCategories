@@ -12,4 +12,6 @@
 
 + (NSArray *)getCharArray;
 
+- (NSString *)getPinyin;
+
 @end

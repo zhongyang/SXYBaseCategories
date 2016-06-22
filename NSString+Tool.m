@@ -19,5 +19,14 @@
     return (NSArray *)tempArr;
 }
 
+- (NSString *)getPinyin {
+    NSMutableString *mutableString = [NSMutableString stringWithString:self];
+    //转化拼音
+    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, false);
+    //取出音调
+    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformStripDiacritics, false);
+    //去空格返回
+    return [mutableString stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
 
 @end
