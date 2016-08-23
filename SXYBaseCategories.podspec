@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SXYBaseCategories"
-  s.version      = "1.0.2"
+  s.version      = "1.0.5"
   s.ios.deployment_target = '7.0'
  # s.osx.deployment_target = '10.8'
   s.summary      = "Categories for development iOS APP"
@@ -12,4 +12,5 @@ Pod::Spec.new do |s|
   s.source_files  = "*.*"
   s.requires_arc = true
   s.dependency 'MBProgressHUD', '~> 0.9.2'
+  s.dependency 'SVProgressHUD', '~> 2.0.3'
 end
