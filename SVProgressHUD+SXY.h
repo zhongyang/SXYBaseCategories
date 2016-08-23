@@ -15,13 +15,9 @@
 // 过度动画下面有文字说明
 + (void)showMessage:(NSString *)message;
 
-// 没有图片的说明
-+ (void)showInfo:(NSString *)info;
-
 // 包含图片的说明
 + (void)showSuccess:(NSString *)success;
 + (void)showError:(NSString *)error;
-+ (void)showWarning:(NSString *)warning;
 
 // HUD消失
 + (void)dismissHUD;

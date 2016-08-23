@@ -12,43 +12,41 @@
 #define DISSMISS_TIME 2.0
 @implementation SVProgressHUD (SXY)
 
-// 统一样式
-+ (void)getDefaultStyle {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-    [SVProgressHUD setMinimumDismissTimeInterval:DISSMISS_TIME];
-}
-
 + (void)showHUD {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
+    [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
+    [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, [UIScreen mainScreen].bounds.size.width*0.3)];
     [SVProgressHUD show];
 }
 
 + (void)showMessage:(NSString *)message {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
+    [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
     [SVProgressHUD showWithStatus:message];
 }
 
-+ (void)showInfo:(NSString *)info {
-    [SVProgressHUD getDefaultStyle];
-
-    //去掉图片
-    [SVProgressHUD setInfoImage:nil];
-    [SVProgressHUD showInfoWithStatus:info];
-}
-
 + (void)showSuccess:(NSString *)success {
-    [SVProgressHUD getDefaultStyle];
-    [SVProgressHUD showSuccessWithStatus:success];
+    [self showError:success];
 }
 
 + (void)showError:(NSString *)error {
-    [SVProgressHUD getDefaultStyle];
-    [SVProgressHUD showErrorWithStatus:error];
-}
-
-+ (void)showWarning:(NSString *)warning {
-    [SVProgressHUD getDefaultStyle];
-    [SVProgressHUD showInfoWithStatus:warning];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width*0.8747;
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setMinimumDismissTimeInterval:DISSMISS_TIME];
+    [SVProgressHUD setMinimumSize:CGSizeMake(width, width*0.222)];
+    [SVProgressHUD setCornerRadius:4.0f];
+    [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, width*0.1)];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
+    [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
+    [SVProgressHUD setErrorImage:nil];
+    [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"\n%@\n",error]];
 }
 
 + (void)dismissHUD {
