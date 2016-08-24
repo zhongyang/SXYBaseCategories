@@ -12,7 +12,7 @@
 #define DISSMISS_TIME 2.0
 @implementation SVProgressHUD (SXY)
 
-+ (void)showLoading {
++ (void)showLoadingHUD {
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
@@ -20,8 +20,9 @@
     [SVProgressHUD show];
 }
 
-+ (void)loadingWith:(NSString *)msg {
++ (void)showLoadingHUDWith:(NSString *)msg {
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD resetOffsetFromCenter];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
@@ -29,16 +30,17 @@
     [SVProgressHUD showWithStatus:msg];
 }
 
-+ (void)successToast:(NSString *)success {
-    [self errorToast:success];
++ (void)successHUDToast:(NSString *)success {
+    [self errorHUDToast:success];
 }
 
-+ (void)errorToast:(NSString *)error {
++ (void)errorHUDToast:(NSString *)error {
     CGFloat width = [UIScreen mainScreen].bounds.size.width*0.8747;
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setMinimumSize:CGSizeMake(width, width*0.222)];
+    [SVProgressHUD resetOffsetFromCenter];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setMinimumDismissTimeInterval:DISSMISS_TIME];
-    [SVProgressHUD setMinimumSize:CGSizeMake(width, width*0.222)];
     [SVProgressHUD setCornerRadius:4.0f];
     [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, width*0.1)];
     [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
@@ -46,11 +48,15 @@
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
     [SVProgressHUD setErrorImage:nil];
-    [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"\n%@\n",error]];
+    [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@",error]];
 }
 
-+ (void)messageToast:(NSString *)msg {
-    [self errorToast:msg];
++ (void)messageHUDToast:(NSString *)msg {
+    [self errorHUDToast:msg];
+}
+
++ (void)dismissHUD {
+    [SVProgressHUD dismiss];
 }
 
 @end

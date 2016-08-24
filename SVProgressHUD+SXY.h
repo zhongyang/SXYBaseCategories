@@ -6,18 +6,21 @@
 //  Copyright © 2016年 zhongyang. All rights reserved.
 //
 
-#import <SVProgressHUD/SVProgressHUD.h>
+#import <SVProgressHUD_SXY/SVProgressHUD.h>
 
 @interface SVProgressHUD (SXY)
 // 只有过度动画
-+ (void)showLoading;
++ (void)showLoadingHUD;
 
 // 过度动画下面有文字说明
-+ (void)loadingWith:(NSString *)msg;
++ (void)showLoadingHUDWith:(NSString *)msg;
 
 // 包含图片的说明
-+ (void)successToast:(NSString *)success;
-+ (void)errorToast:(NSString *)error;
-+ (void)messageToast:(NSString *)msg;
++ (void)successHUDToast:(NSString *)success;
++ (void)errorHUDToast:(NSString *)error;
++ (void)messageHUDToast:(NSString *)msg;
+
+// HUD消失
++ (void)dismissHUD;
 
 @end
