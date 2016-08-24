@@ -10,15 +10,16 @@
 
 @interface SVProgressHUD (SXY)
 // 只有过度动画
-+ (void)showHUD;
++ (void)showLoading;
 
 // 过度动画下面有文字说明
-+ (void)showMessage:(NSString *)message;
++ (void)loadingWith:(NSString *)msg;
 
 // 包含图片的说明
-+ (void)showSuccess:(NSString *)success;
-+ (void)showError:(NSString *)error;
++ (void)successToast:(NSString *)success;
++ (void)errorToast:(NSString *)error;
++ (void)messageToast:(NSString *)msg;
 
 // HUD消失
-+ (void)dismissHUD;
++ (void)dismiss;
 @end

@@ -12,7 +12,7 @@
 #define DISSMISS_TIME 2.0
 @implementation SVProgressHUD (SXY)
 
-+ (void)showHUD {
++ (void)showLoading {
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
@@ -20,20 +20,20 @@
     [SVProgressHUD show];
 }
 
-+ (void)showMessage:(NSString *)message {
++ (void)loadingWith:(NSString *)msg {
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
     [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
-    [SVProgressHUD showWithStatus:message];
+    [SVProgressHUD showWithStatus:msg];
 }
 
-+ (void)showSuccess:(NSString *)success {
-    [self showError:success];
++ (void)successToast:(NSString *)success {
+    [self errorToast:success];
 }
 
-+ (void)showError:(NSString *)error {
++ (void)errorToast:(NSString *)error {
     CGFloat width = [UIScreen mainScreen].bounds.size.width*0.8747;
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
@@ -49,7 +49,11 @@
     [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"\n%@\n",error]];
 }
 
-+ (void)dismissHUD {
++ (void)messageToast:(NSString *)msg {
+    [self errorToast:msg];
+}
+
++ (void)dismiss {
     [SVProgressHUD dismiss];
 }
 @end
