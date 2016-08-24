@@ -53,7 +53,4 @@
     [self errorToast:msg];
 }
 
-+ (void)dismiss {
-    [SVProgressHUD dismiss];
-}
 @end

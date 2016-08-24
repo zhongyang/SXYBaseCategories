@@ -20,6 +20,4 @@
 + (void)errorToast:(NSString *)error;
 + (void)messageToast:(NSString *)msg;
 
-// HUD消失
-+ (void)dismiss;
 @end
