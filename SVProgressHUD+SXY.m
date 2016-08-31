@@ -13,6 +13,7 @@
 @implementation SVProgressHUD (SXY)
 
 + (void)showLoadingHUD {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
@@ -21,6 +22,7 @@
 }
 
 + (void)showLoadingHUDWith:(NSString *)msg {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD resetOffsetFromCenter];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
@@ -36,6 +38,7 @@
 
 + (void)errorHUDToast:(NSString *)error {
     CGFloat width = [UIScreen mainScreen].bounds.size.width*0.8747;
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setMinimumSize:CGSizeMake(width, width*0.222)];
     [SVProgressHUD resetOffsetFromCenter];
