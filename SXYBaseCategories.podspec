@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SXYBaseCategories"
-  s.version      = "1.0.10"
+  s.version      = "1.0.11"
   s.ios.deployment_target = '7.0'
  # s.osx.deployment_target = '10.8'
   s.summary      = "Categories for development iOS APP"
