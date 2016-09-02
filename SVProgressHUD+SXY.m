@@ -17,7 +17,7 @@
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
-    [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, [UIScreen mainScreen].bounds.size.width*0.3)];
+    [SVProgressHUD resetOffsetFromCenter];
     [SVProgressHUD show];
 }
 
