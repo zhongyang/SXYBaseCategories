@@ -16,8 +16,9 @@
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
+    [SVProgressHUD setMinimumSize:CGSizeZero];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
-    [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, [UIScreen mainScreen].bounds.size.height*0.3)];
+    [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, [UIScreen mainScreen].bounds.size.width*0.3)];
     [SVProgressHUD show];
 }
 
@@ -25,6 +26,7 @@
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD resetOffsetFromCenter];
+    [SVProgressHUD setMinimumSize:CGSizeZero];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
@@ -37,21 +39,28 @@
 }
 
 + (void)errorHUDToast:(NSString *)error {
-    CGFloat width = [UIScreen mainScreen].bounds.size.width*0.8747;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
-    [SVProgressHUD setMinimumSize:CGSizeMake(width, width*0.222)];
+    [SVProgressHUD setMinimumSize:[self adaptIpadUI]];
     [SVProgressHUD resetOffsetFromCenter];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setMinimumDismissTimeInterval:DISSMISS_TIME];
     [SVProgressHUD setCornerRadius:4.0f];
-    [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, width*0.1)];
     [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
     [SVProgressHUD setErrorImage:nil];
     [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@",error]];
+}
+
++ (CGSize)adaptIpadUI {
+    if ([UIScreen mainScreen].bounds.size.width > 700) {
+        return CGSizeMake(328,73);
+    }else {
+        CGFloat width = [UIScreen mainScreen].bounds.size.width*0.8747;
+        return CGSizeMake(width, 73);
+    }
 }
 
 + (void)messageHUDToast:(NSString *)msg {
