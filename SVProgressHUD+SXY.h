@@ -23,4 +23,7 @@
 // HUD消失
 + (void)dismissHUD;
 
+//说明
++ (void)showInfoToast:(NSString *)msg;
+
 @end
