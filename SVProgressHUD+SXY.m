@@ -17,6 +17,8 @@
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setMinimumSize:CGSizeZero];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
     [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, [UIScreen mainScreen].bounds.size.width*0.3)];
     [SVProgressHUD show];
@@ -39,11 +41,10 @@
 }
 
 + (void)errorHUDToast:(NSString *)error {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setMinimumSize:[self adaptIpadUI]];
     [SVProgressHUD resetOffsetFromCenter];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setMinimumDismissTimeInterval:DISSMISS_TIME];
     [SVProgressHUD setCornerRadius:4.0f];
     [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
@@ -69,6 +70,15 @@
 
 + (void)dismissHUD {
     [SVProgressHUD dismiss];
+}
+
++ (void)showInfoToast:(NSString *)msg {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
+    [SVProgressHUD setMinimumDismissTimeInterval:DISSMISS_TIME];
+    [SVProgressHUD showInfoWithStatus:msg];
 }
 
 @end
