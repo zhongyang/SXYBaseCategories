@@ -15,6 +15,7 @@
 + (void)showLoadingHUD {
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setMinimumSize:CGSizeZero];
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setMinimumSize:CGSizeZero];
     [SVProgressHUD setBackgroundLayerColor:[UIColor clearColor]];
@@ -25,6 +26,7 @@
 + (void)showLoadingHUDWith:(NSString *)msg {
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setMinimumSize:CGSizeZero];
     [SVProgressHUD resetOffsetFromCenter];
     [SVProgressHUD setMinimumSize:CGSizeZero];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
